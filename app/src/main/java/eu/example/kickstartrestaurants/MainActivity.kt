@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -46,9 +47,15 @@ private fun RestaurantsApp() {
 
 		// In the builder we define routes, and set corresponding @composable
 		composable(route = "restaurants") {
-			RestaurantsScreen() { id ->
-				navController.navigate("restaurants/$id")
-			}
+			val viewModel: RestaurantsViewModel = viewModel()
+			RestaurantsScreen(
+				state = viewModel.state.value,
+				onItemClick = { id ->
+					navController.navigate("restaurants/$id")
+				},
+				onFavoriteClick = { id, oldValue ->
+					viewModel.toggleFavorite(id, oldValue)
+				})
 		}
 
 		composable(
@@ -75,8 +82,13 @@ fun DefaultPreview() {
 		// my own path working wiht holidays, instead of restaturants
 		// HolidayScreen()
 		// Tutorial path, not working on this since chapter with viewModels
-		RestaurantsScreen()
-
-		// RestaurantDetailsScreen()
+		RestaurantsScreen(
+			RestaurantsScreenState(
+				listOf(),
+				true
+			),
+			{},
+			{ _, _ -> }
+		)
 	}
 }

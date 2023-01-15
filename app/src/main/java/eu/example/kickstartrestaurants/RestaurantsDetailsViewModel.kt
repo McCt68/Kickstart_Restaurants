@@ -11,7 +11,7 @@ import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 // ViewModel for detail screen
-class RestaurantDetailsViewModel(
+class RestaurantDetailsViewModel constructor(
 	private val stateHandle: SavedStateHandle
 ): ViewModel() {
 

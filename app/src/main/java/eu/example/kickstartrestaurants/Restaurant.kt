@@ -12,7 +12,7 @@ a table populated with Restaurant objects. In other words, the rows of the table
 are represented by instances of our restaurants.
 We are kinda defining the rows with @ColumnInfo
  */
-@Entity(tableName = "Restaurants") // Room
+@Entity(tableName = "Restaurants") // Should maybe be restaurants instead ??
 data class Restaurant(
 	@PrimaryKey()
 	@ColumnInfo(name = "r_id")

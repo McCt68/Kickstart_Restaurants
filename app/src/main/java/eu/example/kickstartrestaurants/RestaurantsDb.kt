@@ -62,8 +62,7 @@ abstract class RestaurantsDb : RoomDatabase() {
 			Room.databaseBuilder(
 				context.applicationContext,
 				RestaurantsDb::class.java,
-				"restaurants_database"
-			)
+				"restaurants_database")
 				.fallbackToDestructiveMigration()
 				.build()
 	}
