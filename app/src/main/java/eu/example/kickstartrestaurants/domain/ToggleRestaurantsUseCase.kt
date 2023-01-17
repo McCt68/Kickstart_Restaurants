@@ -1,4 +1,6 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.domain
+
+import eu.example.kickstartrestaurants.data.RestaurantsRepository
 
 class ToggleRestaurantsUseCase {
 

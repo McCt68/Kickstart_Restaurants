@@ -4,6 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import eu.example.kickstartrestaurants.data.remote.RestaurantsApiService
+import eu.example.kickstartrestaurants.domain.Restaurant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -44,7 +46,13 @@ class RestaurantDetailsViewModel constructor(
 		return withContext(Dispatchers.IO){
 			val responseMap = restInterface
 				.getRestaurant(id)
-			return@withContext responseMap.values.first()
+			return@withContext responseMap.values.first().let {
+				Restaurant(
+					id = it.id,
+					title = it.title,
+					description = it.description
+				)
+			}
 		}
 	}
 }

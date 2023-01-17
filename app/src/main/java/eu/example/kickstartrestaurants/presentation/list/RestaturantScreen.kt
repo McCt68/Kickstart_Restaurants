@@ -16,6 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import eu.example.kickstartrestaurants.domain.Restaurant
+import eu.example.kickstartrestaurants.presentation.list.RestaurantsScreenState
+import eu.example.kickstartrestaurants.presentation.list.RestaurantsViewModel
 
 
 @Composable
@@ -25,7 +28,7 @@ fun RestaurantsScreen(
 	onFavoriteClick: (id: Int, oldValue: Boolean) -> Unit
 ) {
 
-	val viewModel: RestaurantsViewModel = viewModel()
+	// val viewModel: RestaurantsViewModel = viewModel()
 
 	/*
 	Observing the state from viewModel

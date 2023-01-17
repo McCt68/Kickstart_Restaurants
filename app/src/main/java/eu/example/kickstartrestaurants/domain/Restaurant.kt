@@ -1,9 +1,4 @@
-package eu.example.kickstartrestaurants
-
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+package eu.example.kickstartrestaurants.domain
 
 /*
 Entities that define tables within the private database. In our Restaurants app, we
@@ -12,19 +7,11 @@ a table populated with Restaurant objects. In other words, the rows of the table
 are represented by instances of our restaurants.
 We are kinda defining the rows with @ColumnInfo
  */
-@Entity(tableName = "Restaurants") // Should maybe be restaurants instead ??
+ // @Entity(tableName = "Restaurants") // Should maybe be restaurants instead ?? ( Not used here )
 data class Restaurant(
-	@PrimaryKey()
-	@ColumnInfo(name = "r_id")
-	@SerializedName("r_id")
 	val id: Int,
-	@ColumnInfo(name = "r_title")
-	@SerializedName("r_title")
 	val title: String,
-	@ColumnInfo(name = "r_description")
-	@SerializedName("r_description")
 	val description: String,
-	@ColumnInfo(name = "is_favorite")
 	val isFavorite: Boolean = false
 )
 

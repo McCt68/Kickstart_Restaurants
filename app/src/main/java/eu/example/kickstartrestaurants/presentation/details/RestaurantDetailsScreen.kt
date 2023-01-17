@@ -1,4 +1,4 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.presentation.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import eu.example.kickstartrestaurants.RestaurantDetails
+// import eu.example.kickstartrestaurants.RestaurantDetails
+import eu.example.kickstartrestaurants.RestaurantDetailsViewModel
+import eu.example.kickstartrestaurants.RestaurantIcon
+
 
 @Composable
 fun RestaurantDetailsScreen() {

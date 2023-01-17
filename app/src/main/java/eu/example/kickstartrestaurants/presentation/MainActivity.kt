@@ -1,14 +1,9 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
@@ -17,6 +12,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
+// import eu.example.kickstartrestaurants.RestaurantDetailsScreen
+import eu.example.kickstartrestaurants.RestaurantsScreen
+import eu.example.kickstartrestaurants.presentation.details.RestaurantDetailsScreen
+import eu.example.kickstartrestaurants.presentation.list.RestaurantsScreenState
+import eu.example.kickstartrestaurants.presentation.list.RestaurantsViewModel
 import eu.example.kickstartrestaurants.ui.theme.KickstartRestaurantsTheme
 
 class MainActivity : ComponentActivity() {

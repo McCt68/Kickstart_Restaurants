@@ -1,5 +1,11 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.data
 
+import eu.example.kickstartrestaurants.RestaurantsApplication
+import eu.example.kickstartrestaurants.data.local.LocalRestaurant
+import eu.example.kickstartrestaurants.data.local.PartialLocalRestaurant
+import eu.example.kickstartrestaurants.data.local.RestaurantsDb
+import eu.example.kickstartrestaurants.data.remote.RestaurantsApiService
+import eu.example.kickstartrestaurants.domain.Restaurant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
@@ -27,11 +33,10 @@ class RestaurantsRepository {
 	) =
 		withContext(Dispatchers.IO) {
 			restaurantsDao.update(
-				PartialRestaurant(
+				PartialLocalRestaurant(
 					id = id,
 					isFavorite = value)
 			)
-			// restaurantsDao.getAll()
 		}
 
 	//
@@ -63,17 +68,23 @@ class RestaurantsRepository {
 			.getRestaurants() // get list of restaurants from firestore - all favorites are set to false
 		val favoriteRestaurants = restaurantsDao
 			.getAllFavorited() // get list of Favorited restaurants from room -
-		restaurantsDao.addAll(remoteRestaurants) // now overwritting room (local) favorited to false
+		restaurantsDao.addAll(remoteRestaurants.map {
+			LocalRestaurant(
+				it.id, it.title, it.description, false
+			)
+		}) // now overwritting room (local) favorited to false
 		// get the partial list of favorited restaurants, and overwrite room with those
 		restaurantsDao.updateAll(favoriteRestaurants.map {
-			PartialRestaurant(it.id, true)
+			PartialLocalRestaurant(it.id, true)
 		})
 	}
 
 	//
 	suspend fun getRestaurants(): List<Restaurant>{
 		return withContext(Dispatchers.IO){
-			return@withContext restaurantsDao.getAll()
+			return@withContext restaurantsDao.getAll().map {
+				Restaurant(it.id, it.title, it.description, it.isFavorite)
+			}
 		}
 	}
 }

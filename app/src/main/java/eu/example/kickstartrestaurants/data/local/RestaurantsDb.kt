@@ -1,4 +1,4 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.data.local
 
 import android.content.Context
 import androidx.room.Database
@@ -26,8 +26,8 @@ false to the exportSchema parameter. Room can export the schema
  */
 
 @Database(
-	entities = [Restaurant::class],
-	version = 2, // was 1 when it worked before updating viewModel methods
+	entities = [LocalRestaurant::class],
+	version = 3, // was 1 when it worked before updating viewModel methods
 	exportSchema = false
 )
 abstract class RestaurantsDb : RoomDatabase() {

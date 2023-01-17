@@ -1,9 +1,11 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.presentation.list
 
 import androidx.compose.runtime.State
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
+import eu.example.kickstartrestaurants.domain.GetInitialRestaurantsUseCase
+import eu.example.kickstartrestaurants.domain.ToggleRestaurantsUseCase
 import kotlinx.coroutines.*
 
 

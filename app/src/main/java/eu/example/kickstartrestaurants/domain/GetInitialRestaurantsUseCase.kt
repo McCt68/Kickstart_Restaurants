@@ -1,4 +1,6 @@
-package eu.example.kickstartrestaurants
+package eu.example.kickstartrestaurants.domain
+
+import eu.example.kickstartrestaurants.data.RestaurantsRepository
 
 /*
 Functionally, this Use Case class gets the restaurants from
